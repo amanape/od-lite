@@ -1,27 +1,28 @@
 export enum Event {
   USER_MESSAGE = "USER_MESSAGE",
   AI_MESSAGE = "AI_MESSAGE",
+  OBSERVATION = "OBSERVATION",
 }
 
-type Payload = Record<string, string>;
+type Data = Record<string, string>;
 
 export type BaseAction = {
   type: Event;
-  payload: Payload;
+  data: Data;
 };
 
 interface UserMessage extends BaseAction {
   type: Event.USER_MESSAGE;
-  payload: {
+  data: {
     message: string;
   };
 }
 
 interface AIMessage extends BaseAction {
   type: Event.AI_MESSAGE;
-  payload: {
+  data: {
     message: string;
   };
 }
 
-type Action = UserMessage | AIMessage;
+export type Payload = UserMessage | AIMessage;

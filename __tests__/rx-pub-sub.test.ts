@@ -16,6 +16,6 @@ describe("RxPubSub", () => {
       done();
     });
 
-    rxPubSub.publish({ type: Event.USER_MESSAGE, payload: { message: "Hello from a User!" } });
+    rxPubSub.publish({ type: Event.USER_MESSAGE, data: { message: "Hello from a User!" } });
   });
 });
