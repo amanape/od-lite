@@ -1,8 +1,8 @@
-import RxPubSub from "./utils/rx-pub-sub";
+import RxPubSub from "@utils/rx-pub-sub";
 import { Topic, type Event, type UserMessage } from "./types/events";
-import Agent from "./implementations/basic-agent";
-import BasicRuntime from "./implementations/basic-runtime";
-import TerminalManager from "./implementations/basic-terminal-manager";
+import Agent from "@implementations/basic-agent";
+import BasicRuntime from "@implementations/basic-runtime";
+import TerminalManager from "@implementations/basic-terminal-manager";
 
 const isUserMessageEvent = (payload: Event['data']): payload is UserMessage['data'] => 'message' in payload;
 

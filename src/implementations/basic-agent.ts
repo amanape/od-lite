@@ -1,5 +1,5 @@
-import type { Message } from "../abc/agent";
-import type Agent from "../abc/agent";
+import type { Message } from "@abc/agent";
+import type Agent from "@abc/agent";
 import type { Action } from "../types/actions";
 
 class BasicAgent implements Agent {

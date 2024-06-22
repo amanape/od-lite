@@ -1,5 +1,5 @@
-import type Runtime from "../abc/runtime";
-import ObservationFactory from "../utils/observation-factory";
+import type Runtime from "@abc/runtime";
+import ObservationFactory from "@utils/observation-factory";
 import type TerminalManager from "./basic-terminal-manager";
 import type { Action } from "../types/actions";
 
