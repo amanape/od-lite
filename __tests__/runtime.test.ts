@@ -8,7 +8,7 @@ describe("Runtime", () => {
 
     const input = { command: "ls" };
     const output = "ls-result";
-    const observation = runtime.handle(input.command);
+    const observation = runtime.handle(input);
 
     expect(observation).toEqual({ input: input.command, output });
   });
