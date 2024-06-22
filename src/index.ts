@@ -1,27 +1,28 @@
 import RxPubSub from "@utils/rx-pub-sub";
-import { Topic, type Event, type UserMessage } from "./types/events";
-import Agent from "@implementations/basic-agent";
+import { type Event, type UserMessage } from "./types/events";
+import { BasicAgent } from "@implementations/basic-agent";
 import BasicRuntime from "@implementations/basic-runtime";
-import TerminalManager from "@implementations/basic-terminal-manager";
+import { MockTerminalManager } from "@implementations/basic-terminal-manager";
+import { Topic } from "./types/root";
 
 const isUserMessageEvent = (payload: Event['data']): payload is UserMessage['data'] => 'message' in payload;
 
 const pubsub = new RxPubSub();
-const agent = new Agent();
-const runtime = new BasicRuntime(new TerminalManager());
+const agent = new BasicAgent();
+const runtime = new BasicRuntime(new MockTerminalManager());
 
 const user = pubsub.subscribe(Topic.USER_MESSAGE);
 const observations = pubsub.subscribe(Topic.OBSERVATION);
 
 user.subscribe({
-  next: (payload) => {
+  next: async (payload) => {
     // TODO: properly handle
     if (!isUserMessageEvent(payload)) return;
 
     const action = agent.act([payload]);
-    const observation = runtime.handle(action);
+    const observation = await runtime.handle(action);
 
-    pubsub.publish({ type: Topic.OBSERVATION, data: observation });
+    pubsub.publish(observation);
   },
 });
 

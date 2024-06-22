@@ -1,15 +1,5 @@
-export enum Topic {
-  USER_MESSAGE,
-  AI_MESSAGE,
-  OBSERVATION,
-}
-
-type Data = Record<string, string>;
-
-export type BaseEvent = {
-  type: Topic;
-  data: Data;
-};
+import type { Observation } from "./observations";
+import type { BaseEvent, Topic } from "./root";
 
 export interface UserMessage extends BaseEvent {
   type: Topic.USER_MESSAGE;
@@ -25,11 +15,4 @@ interface AIMessage extends BaseEvent {
   };
 }
 
-interface TerminalObservation extends BaseEvent {
-  type: Topic.OBSERVATION;
-  data: {
-    output: string;
-  };
-}
-
-export type Event = UserMessage | AIMessage | TerminalObservation;
+export type Event = UserMessage | AIMessage | Observation;
