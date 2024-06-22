@@ -1,5 +1,5 @@
-import type { Observation } from "src/types/observations";
-import { Topic } from "src/types/root";
+import type { Observation } from "../types/observations";
+import { Topic } from "../types/root";
 
 class ObservationFactory {
   static fromTerminalOutput(input: string, output: string): Observation {
