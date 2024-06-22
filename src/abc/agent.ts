@@ -1,11 +1,7 @@
 import type { Action } from "../types/actions";
 
-export type Message = {
-  message: string;
-};
-
 abstract class Agent {
-  public abstract act(state: Message[]): Action;
+  public abstract query(message: string): Promise<Action>;
 }
 
 export default Agent;

@@ -10,9 +10,9 @@ describe("Agent", () => {
   });
 
   it("generates a terminal action", () => {
-    const userPayload = { message: "terminal" };
+    const userPayload = "terminal"
 
-    const terminalAction = agent.act([userPayload]);
-    expect(terminalAction).toEqual({ command: userPayload.message + "ls" });
+    const terminalAction = agent.query(userPayload);
+    expect(terminalAction).resolves.toEqual({ command: userPayload + "ls" });
   });
 });
