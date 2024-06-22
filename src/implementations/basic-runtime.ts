@@ -2,8 +2,8 @@ import type Runtime from "@abc/runtime";
 import ObservationFactory from "@utils/observation-factory";
 import type { Action } from "../types/actions";
 import type TerminalManager from "@abc/terminal-manager";
-import type { Observation } from "src/types/observations";
-import { Topic } from "src/types/root";
+import type { Observation } from "../types/observations";
+import { Topic } from "../types/root";
 
 class BasicRuntime implements Runtime {
   constructor(private readonly terminalManager: TerminalManager) { }

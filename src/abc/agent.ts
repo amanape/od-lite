@@ -1,4 +1,4 @@
-import type { Action } from "src/types/actions";
+import type { Action } from "../types/actions";
 
 export type Message = {
   message: string;
