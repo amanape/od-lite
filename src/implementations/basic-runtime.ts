@@ -3,16 +3,13 @@ import ObservationFactory from "@utils/observation-factory";
 import type { Action } from "../types/actions";
 import type TerminalManager from "@abc/terminal-manager";
 import type { Observation } from "../types/observations";
-import { Topic } from "../types/root";
 
 class BasicRuntime implements Runtime {
   constructor(private readonly terminalManager: TerminalManager) { }
 
   public async handle(action: Action): Promise<Observation> {
     const output = await this.terminalManager.write(action.command);
-    const data = ObservationFactory.fromTerminalOutput(action.command, output);
-
-    return { type: Topic.OBSERVATION, data };
+    return ObservationFactory.fromTerminalOutput(action.command, output);
   }
 }
 
