@@ -1,10 +1,10 @@
 import { describe, it, expect } from "bun:test";
-import Runtime from "../src/runtime";
-import TerminalManager from "../src/terminal-manager";
+import BasicRuntime from "../../src/implementations/basic-runtime";
+import BasicTerminalManager from "../../src/implementations/basic-terminal-manager";
 
 describe("Runtime", () => {
   it("should convert a terminal action into an observation", () => {
-    const runtime = new Runtime(new TerminalManager());
+    const runtime = new BasicRuntime(new BasicTerminalManager());
 
     const input = { command: "ls" };
     const output = "ls-result";

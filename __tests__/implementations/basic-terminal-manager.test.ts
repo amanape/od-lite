@@ -1,9 +1,9 @@
 import { describe, it, expect } from "bun:test";
-import TerminalManager from "../src/terminal-manager";
+import BasicTerminalManager from "../../src/implementations/basic-terminal-manager";
 
 describe("TerminalManager", () => {
   it("should call the write command", () => {
-    const tm = new TerminalManager();
+    const tm = new BasicTerminalManager();
     expect(tm.write("ls")).toBe("ls-result");
   });
 });

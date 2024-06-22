@@ -1,6 +1,6 @@
 import { describe, beforeEach, it, expect } from "bun:test";
-import RxPubSub from "../src/rx-pub-sub";
-import { Topic } from "../src/events";
+import RxPubSub from "../../src/utils/rx-pub-sub";
+import { Topic } from "../../src/types/events";
 
 describe("RxPubSub", () => {
   let rxPubSub: RxPubSub;
