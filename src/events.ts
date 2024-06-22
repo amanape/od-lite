@@ -1,28 +1,35 @@
-export enum Event {
-  USER_MESSAGE = "USER_MESSAGE",
-  AI_MESSAGE = "AI_MESSAGE",
-  OBSERVATION = "OBSERVATION",
+export enum Topic {
+  USER_MESSAGE,
+  AI_MESSAGE,
+  OBSERVATION,
 }
 
 type Data = Record<string, string>;
 
-export type BaseAction = {
-  type: Event;
+export type BaseEvent = {
+  type: Topic;
   data: Data;
 };
 
-interface UserMessage extends BaseAction {
-  type: Event.USER_MESSAGE;
+export interface UserMessage extends BaseEvent {
+  type: Topic.USER_MESSAGE;
   data: {
     message: string;
   };
 }
 
-interface AIMessage extends BaseAction {
-  type: Event.AI_MESSAGE;
+interface AIMessage extends BaseEvent {
+  type: Topic.AI_MESSAGE;
   data: {
     message: string;
   };
 }
 
-export type Payload = UserMessage | AIMessage;
+interface TerminalObservation extends BaseEvent {
+  type: Topic.OBSERVATION;
+  data: {
+    output: string;
+  };
+}
+
+export type Event = UserMessage | AIMessage | TerminalObservation;

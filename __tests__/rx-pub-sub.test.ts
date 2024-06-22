@@ -1,6 +1,6 @@
 import { describe, beforeEach, it, expect } from "bun:test";
 import RxPubSub from "../src/rx-pub-sub";
-import { Event } from "../src/events";
+import { Topic } from "../src/events";
 
 describe("RxPubSub", () => {
   let rxPubSub: RxPubSub;
@@ -10,12 +10,12 @@ describe("RxPubSub", () => {
   });
 
   it("should publish and subscribe to a message", (done) => {
-    const subscription = rxPubSub.subscribe(Event.USER_MESSAGE);
+    const subscription = rxPubSub.subscribe(Topic.USER_MESSAGE);
     subscription.subscribe((payload) => {
       expect(payload.message).toBe("Hello from a User!");
       done();
     });
 
-    rxPubSub.publish({ type: Event.USER_MESSAGE, data: { message: "Hello from a User!" } });
+    rxPubSub.publish({ type: Topic.USER_MESSAGE, data: { message: "Hello from a User!" } });
   });
 });

@@ -6,7 +6,7 @@ type Message = {
 
 class Agent {
   public act(state: Message): Action {
-    return { command: "ls" };
+    return { command: state.message + "ls" };
   };
 }
 

@@ -1,16 +1,16 @@
 import { Subject, Observable, filter, map } from "rxjs";
-import { type Payload, type Event } from "./events";
+import { type Event, type Topic } from "./events";
 
 class RxPubSub {
-  private readonly subject = new Subject<Payload>();
+  private readonly subject = new Subject<Event>();
 
-  publish(action: Payload): void {
-    this.subject.next(action);
+  publish(event: Event): void {
+    this.subject.next(event);
   }
 
-  subscribe(type: Event): Observable<Payload['data']> {
+  subscribe(topic: Topic): Observable<Event['data']> {
     return this.subject.pipe(
-      filter((data) => data.type === type),
+      filter((data) => data.type === topic),
       map((data) => data.data)
     );
   }

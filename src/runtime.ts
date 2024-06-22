@@ -1,12 +1,13 @@
 import ObservationFactory from "./observation-factory";
 import type TerminalManager from "./terminal-manager";
+import type { Action } from "./types/actions";
 
 class Runtime {
   constructor(private readonly terminalManager: TerminalManager) { }
 
-  public handle(input: Action) {
-    const output = this.terminalManager.write(input);
-    return ObservationFactory.fromTerminalOutput(input, output);
+  public handle(action: Action) {
+    const output = this.terminalManager.write(action.command);
+    return ObservationFactory.fromTerminalOutput(action.command, output);
   }
 }
 
