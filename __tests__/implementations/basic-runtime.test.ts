@@ -1,7 +1,7 @@
 import { describe, it, expect } from "bun:test";
 import BasicRuntime from "../../src/implementations/basic-runtime";
 import { MockTerminalManager } from "../../src/implementations/basic-terminal-manager";
-import { Topic } from "../../src/types/root";
+import { Topic } from "../../src/core/types/root";
 
 describe("Runtime", () => {
   it("should convert a terminal action into an observation", async () => {

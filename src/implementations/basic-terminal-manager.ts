@@ -1,4 +1,4 @@
-import type TerminalManager from "@abc/terminal-manager";
+import type TerminalManager from "@core/abc/terminal-manager";
 
 export class MockTerminalManager implements TerminalManager {
   async write(command: string) {

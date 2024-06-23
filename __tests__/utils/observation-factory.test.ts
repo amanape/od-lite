@@ -1,6 +1,6 @@
 import { describe, it, expect } from "bun:test";
-import ObservationFactory from "../../src/utils/observation-factory";
-import { Topic } from "../../src/types/root";
+import ObservationFactory from "../../src/core/utils/observation-factory";
+import { Topic } from "../../src/core/types/root";
 
 describe("ObservationFactory", () => {
   it("should convert a terminal output into an observation", () => {

@@ -1,8 +1,8 @@
-import RxPubSub from "@utils/rx-pub-sub";
-import { Topic } from "./types/root";
-import Agent from "@abc/agent";
-import Runtime from "@abc/runtime";
-import TerminalManager from "@abc/terminal-manager";
-import ObservationFactory from "@utils/observation-factory";
+import Agent from "@core/abc/agent";
+import Runtime from "@core/abc/runtime";
+import TerminalManager from "@core/abc/terminal-manager";
+import { Topic } from "@core/types/root";
+import ObservationFactory from "@core/utils/observation-factory";
+import RxPubSub from "@core/utils/rx-pub-sub";
 
 export { RxPubSub, Agent, Runtime, TerminalManager, Topic, ObservationFactory };

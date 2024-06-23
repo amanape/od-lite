@@ -1,5 +1,5 @@
-import { Subject, Observable, filter, map } from "rxjs";
-import { type Event } from "../types/root";
+import { Subject, Observable, filter } from "rxjs";
+import { type Event } from "../types";
 
 class RxPubSub {
   private readonly subject = new Subject<Event>();
