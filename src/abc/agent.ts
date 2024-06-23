@@ -1,4 +1,4 @@
-import type { Message } from "../types/events";
+import type { Message } from "../types/messages";
 import type { Action } from "../types/actions";
 
 abstract class Agent {

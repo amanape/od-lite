@@ -1,6 +1,7 @@
 import { describe, beforeEach, it, expect } from "bun:test";
 import type Agent from "../../src/abc/agent";
 import { BasicAgent } from "../../src/implementations/basic-agent";
+import { Topic } from "../../src/types/root";
 
 describe("Agent", () => {
   let agent: Agent;
@@ -13,13 +14,13 @@ describe("Agent", () => {
     const userPayload = "terminal"
 
     const terminalAction = agent.query(userPayload);
-    expect(terminalAction).resolves.toEqual({ command: userPayload + "ls" });
+    expect(terminalAction).resolves.toEqual({ type: Topic.ACTION, data: { command: userPayload + "ls" } });
   });
 
   it("generates a message action by default", () => {
     const userPayload = "message";
 
     const messageAction = agent.query(userPayload);
-    expect(messageAction).resolves.toEqual({ message: userPayload + "msg" });
+    expect(messageAction).resolves.toEqual({ type: Topic.MESSAGE, data: { role: "ai", message: userPayload + "msg" } });
   });
 });

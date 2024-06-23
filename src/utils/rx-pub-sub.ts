@@ -1,5 +1,5 @@
 import { Subject, Observable, filter, map } from "rxjs";
-import { type Event } from "../types/events";
+import { type Event } from "../types/root";
 import type { Topic } from "../types/root";
 
 class RxPubSub {

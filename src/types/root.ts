@@ -1,6 +1,10 @@
+import type { Action } from "./actions";
+import type { Message } from "./messages";
+import type { Observation } from "./observations";
+
 export enum Topic {
-  USER_MESSAGE,
-  AI_MESSAGE,
+  MESSAGE,
+  ACTION,
   OBSERVATION,
 }
 
@@ -10,3 +14,5 @@ export type BaseEvent = {
   type: Topic;
   data: Data;
 };
+
+export type Event = Message | Action | Observation;

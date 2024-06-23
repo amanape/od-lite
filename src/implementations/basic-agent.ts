@@ -1,12 +1,14 @@
 import type Agent from "@abc/agent";
 import type { Action } from "../types/actions";
-import type { Message } from "../types/events";
+import type { Message } from "../types/messages";
+import { Topic } from "src/types/root";
 
 export class BasicAgent implements Agent {
   public async query(message: string): Promise<Action | Message> {
     if (message === "terminal") {
-      return { command: message + "ls" };
+      return { type: Topic.ACTION, data: { command: message + "ls" } };
     }
-    return { message: message + "msg" };
+
+    return { type: Topic.MESSAGE, data: { role: "ai", message: message + "msg" } };
   };
 }

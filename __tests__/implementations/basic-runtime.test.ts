@@ -9,7 +9,7 @@ describe("Runtime", () => {
 
     const input = "ls";
     const output = "ls-result";
-    const observation = await runtime.handle({ command: input });
+    const observation = await runtime.handle({ type: Topic.ACTION, data: { command: input } });
 
     expect(observation).toEqual({ type: Topic.OBSERVATION, data: { input, output } });
   });
