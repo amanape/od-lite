@@ -10,12 +10,12 @@ describe("RxPubSub", () => {
   });
 
   it("should publish and subscribe to a message", (done) => {
-    const subscription = rxPubSub.subscribe(Topic.USER_MESSAGE);
+    const subscription = rxPubSub.subscribe(Topic.MESSAGE);
     subscription.subscribe((payload) => {
-      expect(payload.message).toBe("Hello from a User!");
+      expect(payload.data.message).toBe("Hello from a User!");
       done();
     });
 
-    rxPubSub.publish({ type: Topic.USER_MESSAGE, data: { message: "Hello from a User!" } });
+    rxPubSub.publish({ type: Topic.MESSAGE, data: { role: "user", message: "Hello from a User!" } });
   });
 });
