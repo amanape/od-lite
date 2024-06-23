@@ -1,7 +1,7 @@
 import type Agent from "@abc/agent";
 import type { Action } from "../types/actions";
 import type { Message } from "../types/messages";
-import { Topic } from "src/types/root";
+import { Topic } from "../types/root";
 
 export class BasicAgent implements Agent {
   public async query(message: string): Promise<Action | Message> {
