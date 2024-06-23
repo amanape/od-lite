@@ -15,4 +15,11 @@ describe("Agent", () => {
     const terminalAction = agent.query(userPayload);
     expect(terminalAction).resolves.toEqual({ command: userPayload + "ls" });
   });
+
+  it("generates a message action by default", () => {
+    const userPayload = "message";
+
+    const messageAction = agent.query(userPayload);
+    expect(messageAction).resolves.toEqual({ message: userPayload + "msg" });
+  });
 });
