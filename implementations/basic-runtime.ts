@@ -1,7 +1,6 @@
 import type Runtime from "@core/abc/runtime";
 import type TerminalManager from "@core/abc/terminal-manager";
-import type { Action } from "@core/types/actions";
-import type { Observation } from "@core/types/observations";
+import type { Action, Observation } from "@core/types";
 import ObservationFactory from "@core/utils/observation-factory";
 
 class BasicRuntime implements Runtime {

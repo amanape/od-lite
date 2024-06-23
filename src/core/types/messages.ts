@@ -1,6 +1,6 @@
 import type { BaseEvent, Topic } from "./root";
 
-interface UserMessage extends BaseEvent {
+export interface UserMessage extends BaseEvent {
   type: Topic.MESSAGE;
   data: {
     role: "user";
@@ -8,12 +8,10 @@ interface UserMessage extends BaseEvent {
   };
 }
 
-interface AIMessage extends BaseEvent {
+export interface AIMessage extends BaseEvent {
   type: Topic.MESSAGE;
   data: {
     role: "ai";
     message: string;
   };
 }
-
-export type Message = UserMessage | AIMessage;

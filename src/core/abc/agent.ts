@@ -1,5 +1,4 @@
-import type { Message } from "../types/messages";
-import type { Action } from "../types/actions";
+import type { Action, Message } from "@core/types";
 
 abstract class Agent {
   public abstract query(message: string): Promise<Action | Message>;

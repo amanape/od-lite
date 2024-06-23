@@ -1,4 +1,4 @@
-import type { Observation } from "../types/observations";
+import type { Observation } from "../types";
 import { Topic } from "../types/root";
 
 class ObservationFactory {

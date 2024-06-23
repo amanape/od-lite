@@ -1,6 +1,6 @@
 import { describe, it, expect } from "bun:test";
-import BasicRuntime from "../../src/implementations/basic-runtime";
-import { MockTerminalManager } from "../../src/implementations/basic-terminal-manager";
+import BasicRuntime from "../../implementations/basic-runtime";
+import { MockTerminalManager } from "../../implementations/basic-terminal-manager";
 import { Topic } from "../../src/core/types/root";
 
 describe("Runtime", () => {

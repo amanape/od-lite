@@ -1,6 +1,6 @@
 import { describe, beforeEach, it, expect } from "bun:test";
 import type Agent from "../../src/core/abc/agent";
-import { BasicAgent } from "../../src/implementations/basic-agent";
+import { BasicAgent } from "../../implementations/basic-agent";
 import { Topic } from "../../src/core/types/root";
 
 describe("Agent", () => {

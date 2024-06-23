@@ -1,5 +1,4 @@
-import type { Observation } from "../types/observations";
-import type { Action } from "../types/actions";
+import type { Action, Observation } from "@core/types";
 
 abstract class Runtime {
   public abstract handle(action: Action): Promise<Observation>;
