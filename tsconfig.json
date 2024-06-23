@@ -17,6 +17,7 @@
     "verbatimModuleSyntax": true,
     "noEmit": false,
     "declaration": true,
+    "rootDir": "src",
     "outDir": "dist",
 
     // Best practices
@@ -28,7 +29,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
-
     "paths": {
       "@core/*": [
         "./src/core/*"
@@ -36,6 +36,6 @@
     }
   },
   "include": [
-    "src"
-, "implementations"  ]
+    "src",
+  ],
 }
