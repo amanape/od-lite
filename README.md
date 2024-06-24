@@ -100,4 +100,4 @@ To create your own session implementation, you can use the [`RxPubSub`](./src/co
 
 ## Examples
 
-Coming soon...
+CLI: <https://github.com/amanape/od-lite-cli>
