@@ -1,13 +1,13 @@
 import { describe, beforeEach, it, expect } from "bun:test";
 import type Agent from "../../src/core/abc/agent";
-import { BasicAgent } from "../../implementations/basic-agent";
+import { MockAgent } from "../../implementations/basic-agent";
 import { Topic } from "../../src/core/types/root";
 
 describe("Agent", () => {
   let agent: Agent;
 
   beforeEach(() => {
-    agent = new BasicAgent();
+    agent = new MockAgent();
   });
 
   it("generates a terminal action", () => {

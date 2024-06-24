@@ -1,15 +1,9 @@
-import type Runtime from "@core/abc/runtime";
-import type TerminalManager from "@core/abc/terminal-manager";
-import type { Action, Observation } from "@core/types";
-import ObservationFactory from "@core/utils/observation-factory";
+import Runtime from "../src/core/abc/runtime";
+import { Action, Observation } from "../src/core/types";
+import { Topic } from "../src/core/types/root";
 
-class BasicRuntime implements Runtime {
-  constructor(private readonly terminalManager: TerminalManager) { }
-
+export class MockRuntime implements Runtime {
   public async handle(action: Action): Promise<Observation> {
-    const output = await this.terminalManager.write(action.data.command);
-    return ObservationFactory.fromTerminalOutput(action.data.command, output);
+    return { type: Topic.OBSERVATION, data: { input: action.data.command, output: 'output' } };
   }
 }
-
-export default BasicRuntime;

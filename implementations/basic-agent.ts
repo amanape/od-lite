@@ -1,8 +1,8 @@
-import type Agent from "@core/abc/agent";
-import type { Action, Message } from "@core/types";
-import { Topic } from "@core/types/root";
+import Agent from "../src/core/abc/agent";
+import { Action, Message } from "../src/core/types";
+import { Topic } from "../src/core/types/root";
 
-export class BasicAgent implements Agent {
+export class MockAgent implements Agent {
   public async query(message: string): Promise<Action | Message> {
     if (message === "terminal") {
       return { type: Topic.ACTION, data: { command: message + "ls" } };
