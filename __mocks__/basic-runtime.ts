@@ -1,5 +1,4 @@
 import Runtime from "../src/core/abc/runtime";
-import { Action, Observation } from "../src/core/types";
 import { Topic } from "../src/core/types/root";
 
 export class MockRuntime implements Runtime {

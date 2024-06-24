@@ -1,5 +1,5 @@
 import Agent from "../src/core/abc/agent";
-import { Action, Message } from "../src/core/types";
+import { Message } from "../src/core/types";
 import { Topic } from "../src/core/types/root";
 
 export class MockAgent implements Agent {

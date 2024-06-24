@@ -1,7 +1,5 @@
 # `od-lite`
 
-[![npm version](https://badge.fury.io/js/od-lite.svg?kill_cache=1)](https://badge.fury.io/js/od-lite)
-
 ## Installation
 
 Install the package with `bun add od-lite` or with your favorite package manager.
@@ -16,7 +14,7 @@ bun add od-lite
 
 ## Basic Usage
 
-### Agents
+### Agent
 
 To setup an agent, you need to create a new class that implements the `Agent` interface. Your agent should return an `ActionEvent` or a `Message` in response to a query.
 
