@@ -12,7 +12,7 @@ bun add od-lite
 
 ## What is `od-lite`?
 
-`od-lite` is a lightweight framework that offers the required abstractions to build [Open Devin](https://github.com/OpenDevin/OpenDevin)-like autonomous software agents. It is a pub/sub implementation that allows you to create agents that can interact with a runtime. It is based on the paper by **Wang et al.** (paper coming soon).
+`od-lite` is a lightweight framework that offers the required abstractions to build [OpenDevin](https://github.com/OpenDevin/OpenDevin)-like autonomous software agents. Instead of maintainging a WebSocket connection, it handles the event stream through a pub/sub implementation. It is based on the paper by **Wang et al.** (paper coming soon).
 
 ## Basic Usage
 
@@ -65,7 +65,7 @@ import { Topic } from 'od-lite';
 session.pubsub.publish({ type: Topic.MESSAGE, data: { role: 'user', message: 'Please run ls in the terminal' } });
 ```
 
-The `Session` class already contains a basic implementation of how the agent and runtime interact. You can subscribe to either topic to do things such as logging or debugging.
+The `Session` class already contains a basic implementation of how the agent and runtime interact with each otger. You can subscribe to either topic to do things such as log the messages or actions that are being sent to the agent or runtime.
 
 ```ts
 session.messages.subscribe((payload) => {
@@ -78,3 +78,7 @@ The available topics are `Topic.MESSAGE`, `Topic.ACTION`, and `Topic.OBSERVATION
 ## Custom Sessions
 
 To create your own session implementation, you can use the [`RxPubSub`](./src/core/utils/rx-pub-sub.ts) class to create a custom pub/sub implementation. For reference, you can look at the existing [`Session`](./src/core/session.ts) class.
+
+## Examples
+
+Coming soon...
