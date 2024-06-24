@@ -8,21 +8,16 @@ import { MockRuntime } from "../implementations/basic-runtime";
 import { Action, Message, Observation } from "../src/core/types";
 
 describe('Session', () => {
-  let agent: Agent;
-  let runtime: Runtime;
-  let session: Session;
-
-  beforeEach(() => {
-    agent = new MockAgent();
-    runtime = new MockRuntime();
-    session = new Session(agent, runtime);
-  });
-
   test('Session flow should subscribe and handle messages', async () => {
+    const agent = new MockAgent();
+    const runtime = new MockRuntime();
+    const session = new Session(agent, runtime);
+
     /* Mock the agent and runtime */
     const mockAgentQuery = spyOn(agent, 'query');
     const action: Action = { type: Topic.ACTION, data: { command: "ls" } };
-    mockAgentQuery.mockResolvedValue(action);
+    const aiMessage: Message = { type: Topic.MESSAGE, data: { role: 'ai', message: 'ai message' } };
+    mockAgentQuery.mockResolvedValueOnce(action).mockResolvedValueOnce(aiMessage);
 
     const mockRuntimeHandle = spyOn(runtime, 'handle');
     const observation: Observation = { type: Topic.OBSERVATION, data: { input: action.data.command, output: 'observation' } };
@@ -44,6 +39,7 @@ describe('Session', () => {
     expect(publishSpy).toHaveBeenCalledWith(observation); // 5. runtime publishes an observation from the action
 
     expect(mockAgentQuery).toHaveBeenCalledWith(observation.data.output); // 6. agent queries the observation
+    expect(publishSpy).toHaveBeenCalledWith(message); // 7. agent publishes a message from the observation
 
     // TODO: it should loop until user types exit
   });
