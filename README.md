@@ -1,6 +1,6 @@
 # `od-lite`
 
-[![npm version](https://badge.fury.io/js/od-lite.svg)](https://badge.fury.io/js/od-lite)
+[![npm version](https://badge.fury.io/js/od-lite.svg?kill_cache=1)](https://badge.fury.io/js/od-lite)
 
 ## Installation
 
