@@ -18,12 +18,22 @@ bun add od-lite
 
 ### Agents
 
-To setup an agent, you need to create a new class that implements the `Agent` interface. Your agent should return an `Action` or a `Message` in response to a query.
+To setup an agent, you need to create a new class that implements the `Agent` interface. Your agent should return an `ActionEvent` or a `Message` in response to a query.
 
 ```ts
-import type { Agent, Action, Message } from 'od-lite';
+import type { Agent, ActionEvent, Message } from 'od-lite';
 
-class OpenAIAgent implements Agent {
+interface Command extends ActionEvent {
+  data: {
+    command: string;
+  };
+}
+
+// Implement more interfaces as needed.
+
+type Action = Command;
+
+class OpenAIAgent implements Agent<Action> {
   async query(message: string): Promise<Action | Message> {
     // Implement your agent's logic here.
   }
@@ -35,9 +45,20 @@ class OpenAIAgent implements Agent {
 To handle actions, you need to create a new `Runtime` instance that handles your agents interactions.
 
 ```ts
-import type { Runtime, Action, Observation } from 'od-lite';
+import type { Runtime, ObservationEvent } from 'od-lite';
 
-class BasicRuntime implements Runtime {
+interface Command extends ObservationEvent {
+  data: {
+    input: string;
+    output: string;
+  };
+}
+
+// Implement more interfaces as needed.
+
+type Observation = Command;
+
+class BasicRuntime implements Runtime<Action, Observation> {
   public async handle(action: Action): Promise<Observation> {
     // Implement your runtime's logic here.
   }
@@ -54,7 +75,7 @@ import { Session } from 'od-lite';
 const agent = new OpenAIAgent();
 const runtime = new BasicRuntime();
 
-const session = new Session(agent, runtime);
+const session = new Session(agent, runtime); // Session type is inferred.
 ```
 
 From here, you can query the agent and handle the response.

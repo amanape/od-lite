@@ -1,15 +1,13 @@
-import type { BaseEvent, Topic } from "./root";
+import type { MessageEvent } from "./root";
 
-export interface UserMessage extends BaseEvent {
-  type: Topic.MESSAGE;
+export interface UserMessage extends MessageEvent {
   data: {
     role: "user";
     message: string;
   };
 }
 
-export interface AIMessage extends BaseEvent {
-  type: Topic.MESSAGE;
+export interface AIMessage extends MessageEvent {
   data: {
     role: "ai";
     message: string;

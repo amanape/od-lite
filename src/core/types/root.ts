@@ -4,9 +4,19 @@ export enum Topic {
   OBSERVATION,
 }
 
-type Data = Record<string, string>;
-
-export type BaseEvent = {
+export interface BaseEvent {
   type: Topic;
-  data: Data;
+  data:  Record<string, string>;
 };
+
+export interface MessageEvent extends BaseEvent {
+  type: Topic.MESSAGE;
+}
+
+export interface ActionEvent extends BaseEvent {
+  type: Topic.ACTION;
+}
+
+export interface ObservationEvent extends BaseEvent {
+  type: Topic.OBSERVATION;
+}

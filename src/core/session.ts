@@ -1,18 +1,19 @@
+import type { Observable } from "rxjs";
 import type Agent from "./abc/agent";
 import type Runtime from "./abc/runtime";
-import { Topic } from "./types/root";
+import { Topic, type ActionEvent, type ObservationEvent } from "./types/root";
 import RxPubSub from "./utils/rx-pub-sub";
 
-class Session {
+class Session<T extends ActionEvent, U extends ObservationEvent> {
   public readonly pubsub = new RxPubSub();
 
   public readonly messages = this.pubsub.subscribe(Topic.MESSAGE);
-  public readonly actions = this.pubsub.subscribe(Topic.ACTION);
-  public readonly observations = this.pubsub.subscribe(Topic.OBSERVATION);
+  public readonly actions = this.pubsub.subscribe(Topic.ACTION) as Observable<T>;
+  public readonly observations = this.pubsub.subscribe(Topic.OBSERVATION) as Observable<U>;
 
   constructor(
-    private readonly agent: Agent,
-    private readonly runtime: Runtime,
+    private readonly agent: Agent<T>,
+    private readonly runtime: Runtime<T, U>,
   ) {
     this.registerMessages();
     this.registerActions();

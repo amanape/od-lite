@@ -1,9 +1,8 @@
-import type { Command } from "./actions";
 import type { AIMessage, UserMessage } from "./messages";
-import type { TerminalObservation } from "./observations";
+import type { ActionEvent, ObservationEvent } from "./root";
 
-export type Action = Command;
 export type Message = UserMessage | AIMessage;
-export type Observation = TerminalObservation;
 
-export type Event = Message | Action | Observation;
+// Message is used instead of MessageEvent because we fix that type to be more specific
+// It is Action and Observation that are more generic and depend on the user
+export type Event = Message | ActionEvent | ObservationEvent;

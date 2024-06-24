@@ -1,12 +1,12 @@
-import type { Action, Observation } from "@core/types";
+import type { ActionEvent, ObservationEvent } from "@core/types/root";
 
-abstract class Runtime {
+abstract class Runtime<T extends ActionEvent, U extends ObservationEvent> {
   /**
    * Handle an action.
    * @param action - The action to handle.
    * @returns An observation.
    */
-  public abstract handle(action: Action): Promise<Observation>;
+  public abstract handle(action: T): Promise<U>;
 }
 
 export default Runtime;
