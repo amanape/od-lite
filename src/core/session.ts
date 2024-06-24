@@ -43,12 +43,7 @@ class Session {
     this.observations.subscribe({
       next: async (payload) => {
         const action = await this.agent.query(payload.data.output);
-
-        if (action.type === Topic.MESSAGE) {
-          this.pubsub.publish(action);
-        }
-
-        // pubsub.publish(action);
+        this.pubsub.publish(action);
       }
     });
   }

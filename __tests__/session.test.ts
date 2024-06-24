@@ -44,5 +44,7 @@ describe('Session', () => {
     expect(publishSpy).toHaveBeenCalledWith(observation); // 5. runtime publishes an observation from the action
 
     expect(mockAgentQuery).toHaveBeenCalledWith(observation.data.output); // 6. agent queries the observation
+
+    // TODO: it should loop until user types exit
   });
 });
