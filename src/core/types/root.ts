@@ -6,7 +6,7 @@ export enum Topic {
 
 export interface BaseEvent {
   type: Topic;
-  data:  Record<string, string>;
+  data:  Record<string, string | number>;
 };
 
 export interface MessageEvent extends BaseEvent {
