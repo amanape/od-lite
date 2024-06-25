@@ -43,8 +43,8 @@ class Session<T extends ActionEvent, U extends ObservationEvent> {
   private registerObservations() {
     this.observations.subscribe({
       next: async (payload) => {
-        const action = await this.agent.query(payload.data.output);
-        this.pubsub.publish(action);
+        const actionOrMessage = await this.agent.query(payload.data.output);
+        this.pubsub.publish(actionOrMessage);
       }
     });
   }
