@@ -6,7 +6,7 @@ abstract class Runtime<T extends ActionEvent, U extends ObservationEvent> {
    * @param action - The action to handle.
    * @returns An observation.
    */
-  public abstract handle(action: T): Promise<U>;
+  public abstract execute(action: T): Promise<U>;
 }
 
 export default Runtime;

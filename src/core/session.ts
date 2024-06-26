@@ -34,7 +34,7 @@ class Session<T extends ActionEvent, U extends ObservationEvent> {
   private registerActions() {
     this.actions.subscribe({
       next: async (payload) => {
-        const observation = await this.runtime.handle(payload);
+        const observation = await this.runtime.execute(payload);
         this.pubsub.publish(observation);
       },
     });

@@ -17,7 +17,7 @@ describe('Session', () => {
     const aiMessage: Message = { type: Topic.MESSAGE, data: { role: 'ai', message: 'ai message' } };
     mockAgentQuery.mockResolvedValueOnce(action).mockResolvedValueOnce(aiMessage);
 
-    const mockRuntimeHandle = spyOn(runtime, 'handle');
+    const mockRuntimeHandle = spyOn(runtime, 'execute');
     const observation = { type: Topic.OBSERVATION, data: { input: action.data.command, output: 'observation' } };
     mockRuntimeHandle.mockResolvedValue(observation);
 
