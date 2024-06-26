@@ -4,9 +4,11 @@ export enum Topic {
   OBSERVATION,
 }
 
+type DataValue = string | number | boolean;
+
 export interface BaseEvent {
   type: Topic;
-  data: Record<string, string | number>;
+  data: Record<string, DataValue>;
 };
 
 export interface MessageEvent extends BaseEvent {
@@ -21,6 +23,6 @@ export interface ObservationEvent extends BaseEvent {
   type: Topic.OBSERVATION;
   data: {
     output: string; // all observations should have an output
-    [key: string]: string | number;
+    [key: string]: DataValue;
   }
 }
