@@ -5,10 +5,14 @@ export enum Topic {
 }
 
 type DataValue = string | number | boolean;
+type Data = {
+  identifier: string;
+  [key: string]: DataValue;
+}
 
 export interface BaseEvent {
   type: Topic;
-  data: Record<string, DataValue>;
+  data: Data;
 };
 
 export interface MessageEvent extends BaseEvent {
@@ -21,8 +25,5 @@ export interface ActionEvent extends BaseEvent {
 
 export interface ObservationEvent extends BaseEvent {
   type: Topic.OBSERVATION;
-  data: {
-    output: string; // all observations should have an output
-    [key: string]: DataValue;
-  }
+  data: Data & { output: string; } // all observations should have an output
 }

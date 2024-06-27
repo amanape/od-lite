@@ -14,7 +14,7 @@ describe('Session', () => {
     /* Mock the agent and runtime */
     const mockAgentQuery = spyOn(agent, 'query');
     const action = { type: Topic.ACTION, data: { command: "ls" } };
-    const aiMessage: Message = { type: Topic.MESSAGE, data: { role: 'ai', message: 'ai message' } };
+    const aiMessage: Message = { type: Topic.MESSAGE, data: { identifier: 'ai', message: 'ai message' } };
     mockAgentQuery.mockResolvedValueOnce(action).mockResolvedValueOnce(aiMessage);
 
     const mockRuntimeHandle = spyOn(runtime, 'execute');
@@ -24,7 +24,7 @@ describe('Session', () => {
     const publishSpy = spyOn(session.pubsub, 'publish');
 
     /* Test the session flow */
-    const message: Message = { type: Topic.MESSAGE, data: { role: 'user', message: 'message' } };
+    const message: Message = { type: Topic.MESSAGE, data: { identifier: 'user', message: 'message' } };
     session.pubsub.publish(message); // 1. user publishes a message
 
     expect(publishSpy).toHaveBeenCalledWith(message);

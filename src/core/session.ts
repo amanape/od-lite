@@ -23,7 +23,7 @@ class Session<T extends ActionEvent, U extends ObservationEvent> {
   private registerMessages() {
     this.messages.subscribe({
       next: async (payload) => {
-        if (payload.data.role === 'user') {
+        if (payload.data.identifier === 'user') {
           const action = await this.agent.query(payload.data.message);
           this.pubsub.publish(action);
         }
